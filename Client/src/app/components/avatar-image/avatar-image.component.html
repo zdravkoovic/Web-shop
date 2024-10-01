@@ -1,0 +1,27 @@
+<div *ngIf="showAvatar">
+    <button 
+        mat-icon-button 
+        [matMenuTriggerFor]="profileMenu"
+        class="profile-menu">
+        <img [src]="path | async"/>
+    </button>
+    <mat-menu #profileMenu="matMenu" class="profile-menu">
+        <button mat-menu-item class="profile-menu-item profile">
+            <img class="avatar" [src]="path | async">
+            <p>{{firstName}} {{lastName}}</p>
+        </button>
+        <button 
+            mat-menu-item 
+            class="profile-menu-item">
+            Settings
+            <mat-icon class="profile-menu-icon">settings</mat-icon>
+        </button>
+        <button 
+            mat-menu-item 
+            class="profile-menu-item"
+            (click)="logout()">
+            Logout
+            <mat-icon class="profile-menu-icon">logout</mat-icon>
+        </button>
+    </mat-menu>
+</div>

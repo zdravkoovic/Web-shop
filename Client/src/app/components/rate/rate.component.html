@@ -1,0 +1,45 @@
+<div
+  *ngIf="userComment; else noData"
+  class="user-comment"
+>
+  <div *ngIf="!editComment; else noData">
+      
+    <app-comments [showHR]="false" [comments]="[userComment]"></app-comments>
+      <button mat-button (click)="edit()" class="button-rate">
+        Edit
+      </button>
+
+  </div>
+</div>
+
+<ng-template #noData>
+  <form 
+    [formGroup]="form" 
+    (ngSubmit)="rate()" 
+    class="rate">
+
+    <div style="display: flex; align-items: center; margin-top: 10px;">
+      Rate: <app-rating [readonly]="readonly" [rating]="selectedRating"></app-rating>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      Comment:
+      <textarea 
+      formControlName="comment" 
+      class="text-rate">
+    </textarea>
+    </div>
+    <div style="display: flex;">
+      <button type="submit" mat-button class="button-rate">
+        Submit
+      </button>
+      <button 
+        type="button"
+        (click)="cancel()"
+        mat-button 
+        *ngIf="userComment"
+        class="button-rate">
+          Cancel
+      </button>
+    </div>
+  </form>
+</ng-template>

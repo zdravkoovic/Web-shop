@@ -1,0 +1,31 @@
+.mat-image{
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.mat-card{
+  cursor: pointer;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #005cbb;
+  padding: 10px 0px 0px 0px;
+}
+
+.favorite-button{
+  color: #005cbb;
+  cursor: pointer;
+  padding: 6px;
+  border: none;
+}
+
+.card-actions{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}

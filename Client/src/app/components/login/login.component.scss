@@ -1,0 +1,88 @@
+:host {
+    height: 100vh;
+    display: flex;
+    justify-content: right;
+    background-color: var(--primary-color);
+    padding-top: 100px;
+}
+
+.custom-form-field button{
+    margin: 0px !important;
+    background-color: inherit !important;
+    color: var(--mat-icon-color) !important;
+}
+
+.login-form{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+}
+
+.custom-form-field {
+
+    background: #ffffff;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    width: 400px;
+}  
+
+.mat-input ::placeholder {
+    color: #ffffff;
+}
+
+.login-card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+    width: 600px;
+}
+
+.button-div{
+    flex-grow: 1;
+}
+
+.login-button{
+    background-color: var(--primary-color) !important;
+    color: #ffffff;
+    width: 100%;
+    cursor: pointer;
+}
+
+.login-card a{
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.card-title h1 {
+    font-size: 46px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 80px;
+    margin-top: 30px;
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.welcome{
+    color: white;
+    font: bolder;
+    font-size: 100px;
+}
+
+.not-show-text{
+    color: var(--primary-color);
+    opacity: 0;
+}
+.show-text{
+    opacity: 1;
+    transition: .4s;
+}

@@ -1,0 +1,26 @@
+<div class="comments">
+    
+    <div *ngIf="comments as comments; else noData">
+        <div *ngFor="let comment of comments; trackBy: trackByFn">
+            <div class="comment">
+                <div class="avatar-div">
+                    <img class="comment-picture" *ngIf="comment.avatarUrl" [src]="comment.avatarUrl" alt="Avatar" />
+                </div>
+                <div class="comment-body">
+                    <div class="username-rating">
+                        <h4 class="username">{{ comment.username }}</h4>
+                        <app-rating class="comment-rating" [rating]="comment.rate"></app-rating>
+                    </div>
+                    <p class="text">{{ comment.text }}</p>
+                    <small class="date">{{ comment.timestamp | date:'HH:mm d. MMM. yyyy.' }}</small>
+                </div>
+            </div>
+            <hr *ngIf="showHR"/>
+        </div>
+    </div>
+
+    <ng-template #noData>
+        The product has not comments yet...
+        <hr/>
+    </ng-template>
+</div>

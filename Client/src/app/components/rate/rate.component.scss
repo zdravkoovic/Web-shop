@@ -1,0 +1,24 @@
+.rate{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-rate{
+    width: 500px;
+    height: 150px;
+    max-height: 150px;
+    resize: none;
+}
+
+.button-rate{
+    margin-top: 5px;
+}
+
+.user-comment{
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+}

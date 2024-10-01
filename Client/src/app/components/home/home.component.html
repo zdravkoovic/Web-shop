@@ -1,0 +1,11 @@
+<app-progress-spiner></app-progress-spiner>
+<div class="cont">
+    <section class="results" *ngIf="products$ | async as productList">
+        <ng-container *ngFor="let prod of productList" >
+            <app-products
+                [product]="prod"
+                [path]="prod.images.at(0)?.path">
+            </app-products>
+        </ng-container>
+    </section>
+</div>

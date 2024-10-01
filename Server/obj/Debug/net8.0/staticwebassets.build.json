@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "LnzllBBEjuzD33JS7LiDTdIpfuDg4dOwygBhKViNZAE=",
+  "Source": "WebShop",
+  "BasePath": "_content/WebShop",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebShop\\wwwroot",
+      "Source": "WebShop",
+      "ContentRoot": "C:\\Users\\Lenovo\\Desktop\\WebShop\\Server\\wwwroot\\",
+      "BasePath": "_content/WebShop",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

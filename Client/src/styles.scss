@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+  :root {
+    --primary-color: #605DC8;
+    --secondary-color: #8B89E6;
+    --accent-color: #e8e7fa;
+    --shadow-color: #E8E8E8;
+  }
+  
+  button.primary {
+    padding: 10px;
+    border: solid 1px var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+  }
+  .profile-menu{
+    padding: 20px 5px 20px 5px;
+    background-color: var(--primary-color) !important;
+    width: 300px;
+  }
+  .profile-menu .profile-menu-item{
+    color: white;
+  }
+  .profile-menu .profile-menu-item .profile-menu-icon{
+    color: white;
+  }
+  .profile span{
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+  }
+  .chat-menu, .shopping-menu{
+    margin-top: 7px;
+    width: 300px;
+    background-color: var(--primary-color) !important;
+  }
+  .chat-menu-item, .shoping-menu-item{
+    color: white !important;
+  }
+
+  .mat-grid-list{
+    width: 400px;
+    padding-bottom: 0% !important;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  .rating .ng-star-inserted{
+    font-size: xx-large;
+    // color: yellow;
+  }
+
+  .comment-rating .bi-heart-fill{
+    font-size: 15px;
+    color: white;
+  }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

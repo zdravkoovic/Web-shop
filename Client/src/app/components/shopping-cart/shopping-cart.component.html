@@ -1,0 +1,40 @@
+    <button 
+        mat-icon-button
+        matBadge="{{badgeNumber$ | async}}"
+        [matBadgeHidden]="displayBadge$ | async"
+        matBadgePosition="after"
+        
+        class="button-shopping"
+        [mat-menu-trigger-for]="menu"
+    >
+        <mat-icon class="shopping-icon">shoping_cart</mat-icon>
+        <mat-menu
+            class="shopping-menu"
+            #menu>
+            <div
+                *ngIf="shopping_products$ | async as products$"
+            >
+                
+                    <div *ngIf="products$.length > 0; else emptyBlock">
+                        <div class="shopping-container">
+                            <ng-container
+                                *ngFor="let prod of products$"
+                            >
+                                <app-shoping-cart-item
+                                    [product]="prod"
+                                ></app-shoping-cart-item>
+                            </ng-container>
+                        </div>
+                        <div class="total-price">Total price: {{totalPrice$ | async | currency:'EUR':'symbol'}}</div>
+                    </div>
+                    <ng-template
+                        #emptyBlock
+                    >
+                        <div class="emptyCart">
+                            <mat-icon class="empty-icon">shopping_cart</mat-icon>
+                            <p class="empty-text">Cart is empty</p>
+                        </div>
+                    </ng-template>
+                </div>
+        </mat-menu>
+    </button>

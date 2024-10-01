@@ -1,0 +1,19 @@
+.gallery{
+    width: 100vh;
+    height: calc(100vh - 64px);
+}
+
+.carousel{
+    height: 100%;
+    background-color: black;
+}
+
+.carousel{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel img{
+    height: calc(100vh - 64px);
+}

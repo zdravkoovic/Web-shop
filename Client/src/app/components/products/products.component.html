@@ -1,0 +1,23 @@
+<mat-card 
+    class="mat-card"
+    [routerLink]="['product/', product.id]"  
+    >
+        <img 
+            mat-card-image
+            class="mat-image" 
+            [src]="src" 
+            alt="Slika proizvoda"
+        >
+    <mat-card-content>
+        <p class="name">{{product.name}}</p>
+        <p>{{product.price}}€</p>
+    </mat-card-content>
+    <mat-card-actions class="card-actions">
+        <button 
+            mat-icon-button 
+            class="favorite-button"
+            (click)="addToCart($event)">
+            <mat-icon class="favorite-icon">shopping_cart</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

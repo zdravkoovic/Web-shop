@@ -1,0 +1,58 @@
+<div class="text">
+    <p [classList]="showText">Welcome!</p>
+</div>
+<div class="login-card">
+
+    <div class="card-title">
+        <h1>Login</h1>
+    </div>
+
+    <form 
+        [formGroup]="loginForm" 
+        (ngSubmit)="onSubmit()"
+        class="login-form">
+        <div class="container">
+            <mat-form-field hideRequiredMarker class="custom-form-field" appearance="fill">
+                
+                <mat-label>Enter your nickname</mat-label>
+                <input 
+                    matInput
+                    class="mat-input"
+                    required
+                    formControlName="username">
+        
+            </mat-form-field>
+        </div>
+
+        <div class="container">
+                <mat-form-field hideRequiredMarker class="custom-form-field">
+
+                    <mat-label>Enter your password</mat-label>
+                    <input 
+                        matInput
+                        class="mat-input"
+                        [type]="hide() ? 'password': 'text'" 
+                        required
+                        formControlName="password"
+                        />
+                    <button
+                        mat-icon-button
+                        type="button"
+                        matSuffix
+                        (click)="clickEvent($event)"
+                        [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide()">
+
+                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+        </div>
+
+        <div class="button-div">
+            <button mat-flat-button class="login-button">
+                Login<mat-icon>login</mat-icon>
+            </button>
+        </div>
+        <span>You don't have an account? <a routerLink="/signup">Sign up</a></span>
+    </form>
+</div>

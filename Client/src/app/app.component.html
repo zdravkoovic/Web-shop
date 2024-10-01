@@ -1,0 +1,32 @@
+<mat-toolbar class="toolbar">
+    <a [classList]="link" [routerLink]='"/home"'>
+        <img [class]="image" src="assets/location.png" />
+    </a>
+    <div 
+        class="toolbar-middle"
+        *ngIf="search_item">
+        <input placeholder="Search" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
+    </div>
+    <div 
+        class="toolbar-right" 
+        *ngIf="right_toolbar_items"
+    >
+        
+        <app-shopping-cart></app-shopping-cart>
+        <app-chat></app-chat>
+        <app-avatar-image *ngIf="isProfile$ | async as value; else falseTemplate"></app-avatar-image>
+        
+        <ng-template #falseTemplate>
+            <a 
+                style="display: inherit; margin-left: 7px;"
+                [routerLink]="'/login'"
+            >
+                <img 
+                    src="assets/avatar-men.png"
+                    style="width: 47px; height: 47px;"
+                />
+            </a>
+        </ng-template>
+    </div>
+</mat-toolbar>
+<router-outlet></router-outlet> 

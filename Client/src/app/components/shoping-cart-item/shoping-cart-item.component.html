@@ -1,0 +1,22 @@
+<button
+    class="shopping-item-button"
+    mat-button
+>
+    <div class="container">
+        <span class="product-quantity">{{product.qunatity}}</span>
+        <img 
+            class="shopping-item-img" 
+            [src]="path"
+            mat-icon-button/>
+        <p class="shopping-item-generals">{{product.product.name}}</p>
+    </div>
+    <div class="container">
+        <span class="product-cost">{{product.product.price * product.qunatity| currency:"EUR":"symbol"}}</span>
+        <button
+            mat-menu-item
+            class="mat-menu-item"
+            (click)="onMenuItemClick($event)">
+            <mat-icon class="delete-icon-shop-item">delete</mat-icon>
+        </button>
+    </div>
+</button>

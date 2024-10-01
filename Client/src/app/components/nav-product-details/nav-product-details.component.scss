@@ -1,0 +1,16 @@
+.nav-link.active{
+    background-color: var(--secondary-color);
+    color: white;
+}
+.nav-link{
+    color: var(--secondary-color);
+}
+
+.divNav{
+    margin-top: 32px;
+}
+
+.description{
+    max-height: calc(100vh - 300px);
+    overflow: scroll;
+}

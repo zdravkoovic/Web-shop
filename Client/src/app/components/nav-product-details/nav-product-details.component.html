@@ -1,0 +1,31 @@
+<div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs justify-content-center divNav">
+	<ng-container ngbNavItem="description">
+		<button ngbNavLink>Description</button>
+		<ng-template ngbNavContent>
+			<p class="description">
+				{{description}}
+			</p>
+		</ng-template>
+	</ng-container>
+	<ng-container ngbNavItem="Rate">
+		<button ngbNavLink>Rate</button>
+		<ng-template ngbNavContent>
+			<app-rate (navigateToTab)="onNavigateToTab($event)" [productId]="productId" [userComment]="userComment"></app-rate>
+		</ng-template>
+	</ng-container>
+	<ng-container ngbNavItem="comments">
+		<button ngbNavLink>Comments</button>
+		<ng-template ngbNavContent>
+			<app-comments [comments]="comments"></app-comments>
+		</ng-template>
+	</ng-container>
+	<ng-container ngbNavItem="contact">
+		<button ngbNavLink>Contact</button>
+		<ng-template ngbNavContent>
+			<p>
+			</p>
+		</ng-template>
+	</ng-container>
+</div>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

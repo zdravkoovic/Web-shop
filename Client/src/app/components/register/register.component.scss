@@ -1,0 +1,86 @@
+:host {
+    height: 100vh;
+    display: flex;
+    justify-content: right;
+    background-color: var(--primary-color);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-form-field {
+    width: 400px;
+}
+
+.mat-input{
+    height: 20px !important;
+}
+
+.signup-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+    width: 600px;
+    // height: 100%;
+    margin-top: 64px;
+}
+
+.signup-card a{
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.register-form{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title h1 {
+    flex: 1;
+    font-size: 46px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.card-terms{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-terms input{
+    flex: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.card-terms span{
+    flex: 10;
+    margin: 0;
+    padding: 0;
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.password-error
+{
+    font-size: 13px;
+    color: red;
+}
+
+

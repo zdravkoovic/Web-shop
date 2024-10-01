@@ -1,0 +1,28 @@
+.button-chat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.chat-icon{
+    font-size: 25px;
+}
+
+.chat-icon-menu{
+    color: white !important;
+}
+
+.chat-menu{
+    width: 200px !important;
+}
+
+.chat-menu-item{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
+}

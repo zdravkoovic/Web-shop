@@ -1,0 +1,47 @@
+.comment{
+    display: flex;
+}
+
+.comments{
+    max-height: calc(100vh - 290px);
+    overflow: scroll;
+}
+
+.avatar-div{
+    width: 60px;
+}
+
+.username-rating{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.comment-picture{
+    flex-grow: 1;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.date{
+    display: flex;
+    justify-content: right;
+}
+
+.comment-body{
+    margin-right: 20px;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.1);
+}
+
+.comment h4{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
