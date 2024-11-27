@@ -17,7 +17,7 @@ public class CustomerController(ICustomerService service) : ControllerBase
     }
     [HttpGet]
     [Route("/customers/{Id}")]
-    public async Task<IResult> GetCustomer(int Id)
+    public async Task<IResult> GetCustomer(string Id)
     {
         return Results.Ok(await _service.RetrieveAsync(Id));
     }

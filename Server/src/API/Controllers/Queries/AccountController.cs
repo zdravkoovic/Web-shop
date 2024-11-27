@@ -16,12 +16,14 @@ public class AccountController(
     Context context,
     IConfiguration configuration,
     UserManager<ApiUser> userManager,
+    RoleManager<IdentityRole> roleManager,
     SignInManager<ApiUser> signInManager) : ControllerBase
 {
     private readonly Context _context = context;
     private readonly IConfiguration _configuration = configuration;
     private readonly UserManager<ApiUser> _userManager = userManager;
     private readonly SignInManager<ApiUser> _signInManager = signInManager;
+    private readonly RoleManager<IdentityRole> _roleManager = roleManager;
 
     [HttpPost]
     public async Task<ActionResult> Login(LoginDTO input)
@@ -39,35 +41,49 @@ public class AccountController(
                         System.Text.Encoding.UTF8.GetBytes(
                             _configuration["JWT:SigningKey"]!)),
                             SecurityAlgorithms.HmacSha256);
-                
-                var claims = new List<Claim>
+
+                var header = new JwtHeader(signingCredentials)
                 {
-                    new(ClaimTypes.Sid, user.Id),
-                    new(ClaimTypes.GivenName, user.UserName!),
-                    new(ClaimTypes.Name, user.FirstName),
-                    new(ClaimTypes.Surname, user.LastName),
-                    new(ClaimTypes.Email, user.Email!)
+                    ["kid"] = _configuration["JWT:Kid"]
                 };
 
-                claims.AddRange(
-                    (await _userManager.GetRolesAsync(user)).Select(r => new Claim(ClaimTypes.Role, r))
-                );
+                var IdClaims = new List<Claim>{
+                    new(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64),
+                    new(JwtRegisteredClaimNames.Sub, user.Id),
+                    new("oid", Guid.NewGuid().ToString()),
+                    new("preferred_username", user.UserName!),
+                    new("email", user.Email!),
+                    new("name", user.FirstName),
+                    new("lastname", user.LastName)
+                };
 
-                var jwtObject = new JwtSecurityToken(
-                    issuer: _configuration["JWT:Issuer"],
-                    audience: _configuration["JWT:Audience"],
-                    claims: claims,
-                    expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["JWT:ExpiryMinutes"])),
-                    signingCredentials: signingCredentials
-                );
+                var accessClaims = new List<Claim>((await _userManager.GetRolesAsync(user)).Select(r => new Claim(ClaimTypes.Role, r)));
 
-                var jwtString = new JwtSecurityTokenHandler().WriteToken(jwtObject);
+
+                var idJwt = new JwtSecurityTokenHandler().WriteToken(new JwtSecurityToken(
+                    header: header,
+                    new JwtPayload(_configuration["JWT:Issuer"]!,
+                                 _configuration["JWT:Audience"]!, 
+                                 IdClaims, DateTime.UtcNow, 
+                                 DateTime.UtcNow.AddMinutes(
+                                    _configuration.GetValue<int>("JWT:IdToken")
+                                ))
+                ));
+
+                var accessJwt = new JwtSecurityTokenHandler().WriteToken(new JwtSecurityToken(
+                    header: header,
+                    new JwtPayload(
+                        _configuration["JWT:Issuer"]!,
+                        _configuration["JWT:Audience"]!, 
+                        accessClaims, DateTime.UtcNow, 
+                        DateTime.UtcNow.AddMinutes(
+                        _configuration.GetValue<int>("JWT:AccessToken")
+                    ))
+                ));
 
                 return StatusCode(StatusCodes.Status200OK, new {
-                    firstName = user.FirstName,
-                    lastName = user.LastName,
-                    nickname = user.UserName, 
-                    token = jwtString
+                    IdToken = idJwt,
+                    AccessToken = accessJwt
                 });
             }
         }
@@ -125,6 +141,19 @@ public class AccountController(
 
             return StatusCode(StatusCodes.Status500InternalServerError, exceptionDetails);
         }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddRoles(string[] roles){
+
+        IdentityResult roleResult = new();
+
+        foreach(var role in roles){
+            if(!await _roleManager.RoleExistsAsync(role))
+                roleResult = await _roleManager.CreateAsync(new IdentityRole(role));
+        }
+
+        return Ok(roleResult);
     }
 
     [HttpPost]

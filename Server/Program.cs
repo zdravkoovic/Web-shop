@@ -15,6 +15,7 @@ using WebShop.src.Domain.Services;
 using WebShop.src.Infrastructure.SQL.Repositories;
 using System.Text.Json.Serialization;
 using WebShop.src.API.Hubs;
+using WebShop.src.Infrastructure.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -116,6 +117,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<CustomException>();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
